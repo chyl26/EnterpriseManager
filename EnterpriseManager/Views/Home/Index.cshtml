@@ -1,0 +1,49 @@
+﻿@*@model List<MultipleChoice>*@
+
+@model PagedList.IPagedList<MultipleChoice>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "单项选择题";
+}
+
+
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <td width="100">@Html.LabelFor(m => m[0].Id)</td>
+        <td>@Html.LabelFor(m => m[0].Topic)</td>
+        <td>@Html.LabelFor(m => m[0].Answer)</td>
+        <td width="60">操作</td>
+    </tr>
+    @foreach (var Cases in Model)
+    {
+        <tr>
+            <td><a href="@Url.Content("~/Home/Details/"+Cases.Id)">@Html.DisplayFor(m => Cases.Id)</a></td>
+            <td><a href="@Url.Content("~/Home/Details/"+Cases.Id)">@Html.DisplayFor(m => Cases.Topic)</a></td>
+            <td><a href="@Url.Content("~/Home/Details/"+Cases.Id)">
+                @Html.DisplayFor(m => Cases.Answer)
+                @switch(Cases.Answer)
+                {
+                    case "A":@Html.DisplayFor(m=>Cases.OptionA)
+                        break;
+                    case "B":@Html.DisplayFor(m => Cases.OptionB)
+                        break;
+                    case "C":@Html.DisplayFor(m => Cases.OptionC)
+                        break;
+                    case "D":@Html.DisplayFor(m => Cases.OptionD)
+                        break;
+                }
+
+                </a></td>
+
+            <td>
+                <a href="@Url.Content("~/Home/Details/"+Cases.Id)">详情</a>@*创建一个超连接调用Home控制器下的Remove方法删除*@
+
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+

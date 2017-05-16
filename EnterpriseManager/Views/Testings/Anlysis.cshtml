@@ -1,0 +1,76 @@
+﻿@model MultipleChoice
+
+@{
+    ViewBag.Title = "在线练习";
+}
+
+@using (Html.BeginForm("Submit", "Testings"))
+{
+    if(ViewBag.end == 1)
+    {
+        <p align="center">测试结束！好好学习天天向上，要多加练习哦！</p>
+        return;
+    }
+    @*<p>答案:@Model.Answer</p>*@
+    @*@Html.HiddenFor(model => Model.Answer)*@
+    @*@Html.HiddenFor(model => Model.Answer, new { id = "answer" })*@
+    <input id="answer" name="Answer" type="hidden" value="@Model.Answer" />
+    <p>@ViewBag.amount</p>
+    <p>@ViewBag.score</p>
+    <p>企业经理试卷结构：单项选择题目60题（1分/题），案例分析题共四大题（每大题20小题，2分/小题）</p>
+    <label>
+        @Html.DisplayNameFor(model => Model.Topic)
+        @Html.DisplayFor(model => Model.Topic)
+    </label>
+    <div class="radio">
+        <label>
+            <input type="radio" name="Result" id="optionsA" value="A">
+            @Html.DisplayNameFor(model => Model.OptionA)——
+            @Html.DisplayFor(model => Model.OptionA)
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="Result" id="optionsB" value="B">
+            @Html.DisplayNameFor(model => Model.OptionB)——
+            @Html.DisplayFor(model => Model.OptionB)
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="Result" id="optionsC" value="C">
+            @Html.DisplayNameFor(model => Model.OptionC)——
+            @Html.DisplayFor(model => Model.OptionC)
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="Result" id="optionsD" value="D">
+            @Html.DisplayNameFor(model => Model.OptionD)——
+            @Html.DisplayFor(model => Model.OptionD)
+        </label>
+    </div>
+    <hr />
+
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary" id="btnNext">下一题目</button>
+    </div>
+
+    <script>
+        $(function (){
+            $("#btnNext").click(function () {
+                var val = $('input:radio[name="Result"]:checked').val();
+                var answer = $('#answer').val();
+
+                if (val == null) {
+                    alert("操作提示：请选择答题选项后再提交！");
+                    return false;
+                }
+                if(answer!=val)
+                {
+                    alert("正确答案为：" + answer);
+                }
+            });
+        })
+    </script>
+}

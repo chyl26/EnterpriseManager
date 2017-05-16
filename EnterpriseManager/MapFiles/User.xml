@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="User" xmlns="http://ibatis.apache.org/mapping"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 设置别名，用于底下指定类型的时候不需要全全类名(包括长的空间名 ),最后一个参数是项目的命名空间名 -->
+  <alias>
+    <typeAlias alias="User" type="EnterpriseManager.Domain.User, EnterpriseManager"/>
+
+  </alias>
+
+  <!-- 数据库到实体类的映射表 -->
+  <resultMaps>
+
+    <!-- 数据库的全部字段到实体类的映射 -->
+    <resultMap id="UserResult" class="User">
+      <result property="UserId" column="UserId" dbType="varchar" type="string" />
+      <result property="ClassifyId" column="ClassifyId" dbType="varchar" type="string" />
+      <result property="UserName" column="UserName" dbType="varchar" type="string" />
+      <result property="PassWord" column="PassWord" dbType="varchar" type="string" />
+    </resultMap>
+
+  </resultMaps>
+
+  <!-- 声明执行语句列表，可以包含多个<select>、<insert>、<update>、<delete>节点 -->
+  <!-- 为了避免SQL语句出现的'<'和'>'会和配置文件的<>冲突，所以SQL语句都写在<![CDATA[  与  ]]>之间 -->
+  <statements>
+
+    <!-- 添加句子SQL语句 -->
+    <insert id="InsertUser" parameterClass="User" >
+      <![CDATA[  
+      insert into Users  
+      (UserId,ClassifyId,UserName,PassWord)  
+      values  
+      (#UserId#,#ClassifyId#,#UserName#,#PassWord#)  
+      ]]>
+    </insert>
+
+    
+  </statements>
+
+</sqlMap>
+

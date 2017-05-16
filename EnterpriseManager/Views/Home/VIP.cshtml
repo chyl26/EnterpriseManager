@@ -1,0 +1,34 @@
+﻿@model List<MultipleChoice>
+@{
+    ViewBag.Title = "单项选择题";
+}
+
+
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <td colspan="4">
+            <a href="@Url.Content("~/Testings/List")">开始测试</a>  |  
+            <a href="@Url.Content("~/FileOperator/DBChioce")">导入单项选择题库</a>  |  
+            <a href="@Url.Content("~/FileOperator/DBAndlysis")">导入案例分析题库</a>
+        </td>
+    </tr>
+    <tr>
+        <td width="100">@Html.LabelFor(m => m[0].Id)</td>
+        <td>@Html.LabelFor(m => m[0].Topic)</td>
+        <td width="60">@Html.LabelFor(m => m[0].Answer)</td>
+        <td width="60">操作</td>
+    </tr>
+    @foreach (var Cases in Model)
+    {
+        <tr>
+            <td><a href="@Url.Content("~/Home/Details/"+Cases.Id)">@Html.DisplayFor(m => Cases.Id)</a></td>
+            <td><a href="@Url.Content("~/Home/Details/"+Cases.Id)">@Html.DisplayFor(m => Cases.Topic)</a></td>
+            <td><a href="@Url.Content("~/Home/Details/"+Cases.Id)">@Html.DisplayFor(m => Cases.Answer)</a></td>
+
+            <td>
+                <a href="@Url.Content("~/Home/Details/"+Cases.Id)">详情</a>@*创建一个超连接调用Home控制器下的Remove方法删除*@
+            </td>
+        </tr>
+    }
+
+</table>

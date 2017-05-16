@@ -1,0 +1,22 @@
+﻿@model List<CaseAnalysis>
+@{
+    ViewBag.Title = "案例分析题";
+}
+
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <td width="100">@Html.LabelFor(m => m[0].Id)</td>
+        <td>@Html.LabelFor(m => m[0].Cases)</td>
+        <td width="100">操作</td>
+    </tr>
+    @foreach (var analysis in Model)
+    {
+        <tr>
+            <td><a href="@Url.Content("~/CaseAnalysis/Details/"+analysis.Id)">@Html.DisplayFor(m => analysis.Id)</a></td>
+            <td><a href="@Url.Content("~/CaseAnalysis/Details/"+analysis.Id)">@Html.DisplayFor(m => analysis.Cases)</a></td>
+            <td><a href="@Url.Content("~/CaseAnalysis/Details/"+analysis.Id)">详情</a>@*创建一个超连接调用Home控制器下的Remove方法删除*@</td>
+        </tr>
+    }
+
+</table>
+

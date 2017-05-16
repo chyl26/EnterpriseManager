@@ -1,0 +1,43 @@
+﻿@model CaseAnalysis
+
+@{
+    ViewBag.Title = "案例题目详情";
+}
+
+<div>
+    <label>@Html.DisplayNameFor(model=>model.Cases)</label>
+    <pre>@Html.DisplayFor(model => model.Cases)</pre>
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <tr>
+            <td width="100">题目编号</td>
+            <td>题目</td>
+            <td>答案</td>
+            <td width="100">操作</td>
+        </tr>
+        @foreach (var choice in Model.Topics)
+        {
+            <tr>
+                <td><a href="@Url.Content("~/CaseAnalysis/ChoiceDetails/"+choice.Id)">@Html.DisplayFor(m => choice.Id)</a></td>
+                <td><a href="@Url.Content("~/CaseAnalysis/ChoiceDetails/"+choice.Id)">@Html.DisplayFor(m => choice.Topic)</a></td>
+                <td><a href="@Url.Content("~/CaseAnalysis/ChoiceDetails/"+choice.Id)">@Html.DisplayFor(m => choice.Answer)
+                        @switch (choice.Answer)
+                        {
+                            case "A":@Html.DisplayFor(m => choice.OptionA)
+                                break;
+                            case "B":@Html.DisplayFor(m => choice.OptionB)
+                                break;
+                            case "C":@Html.DisplayFor(m => choice.OptionC)
+                                break;
+                            case "D":@Html.DisplayFor(m => choice.OptionB)
+                                break;
+                        }</a></td>
+                <td><a href="@Url.Content("~/CaseAnalysis/ChoiceDetails/"+choice.Id)">详情</a>@*创建一个超连接调用Home控制器下的Remove方法删除*@</td>
+            </tr>
+        }
+
+
+    </table>
+    
+</div>
+<p>
+    @Html.ActionLink("返回列表", "Index")

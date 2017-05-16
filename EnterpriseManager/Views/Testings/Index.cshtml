@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "在线测试";
+
+} 
+<label>试卷结构说明：</label>
+<label>试卷由单项选择题和案例分析题两在部分组成。其中单项选择题60题（1分/题，总分60分），案例分析题目4大题（5小题/大题，2分/小题，总分40分）！</label>
+<hr />
+<div>
+    <button type="button" class="btn btn-success btn-lg btn-block" id="ChoiceTesting" name="MultipleChoice">开始单项选择题测试</button>
+    <button type="button" class="btn btn-success btn-lg btn-block" id="CaesTesting" name="CaseAnalysis">开始案例分析题测试</button>
+</div>
+<hr />
+<label>在线测试说明：</label>
+<label>在线测试是模拟真实考试，随机抽取题库练习的方式，单项选择题目测试题数为120题（1分/题）,案例分析题测试题数为10大题目（5小题/大题，2分/小题）</label>
+
+
+<script>
+    $(function(){
+        $("#ChoiceTesting").click(function () {
+            location.href = "@Url.Content("~/Testings/List")";
+        })
+
+        $("#CaesTesting").click(function () {
+            location.href = "@Url.Content("~/Testings/ListAnalysis")";
+        })
+    })
+</script>
