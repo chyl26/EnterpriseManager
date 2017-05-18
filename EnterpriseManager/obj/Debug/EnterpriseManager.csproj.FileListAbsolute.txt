@@ -53,3 +53,4 @@ E:\DevStudy\EnterpriseManager\EnterpriseManager\bin\zh-Hans\System.Web.Helpers.r
 E:\DevStudy\EnterpriseManager\EnterpriseManager\bin\zh-Hans\System.Web.Mvc.resources.dll
 E:\DevStudy\EnterpriseManager\EnterpriseManager\obj\Debug\EnterpriseManager.dll
 E:\DevStudy\EnterpriseManager\EnterpriseManager\obj\Debug\EnterpriseManager.pdb
+E:\DevStudy\EnterpriseManager\EnterpriseManager\obj\Debug\EnterpriseManager.csprojResolveAssemblyReference.cache
