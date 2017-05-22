@@ -88,7 +88,7 @@ namespace EnterpriseManager.Controllers
                 }
             }
             string amount = "答题总数：" + (results != null ? results.Count : 0).ToString() + "题";
-            string score = "答题总分：" + (success != null ? success.Count * 1 : 0).ToString() + "分";
+            string score = "答题总分：" + (success != null ? success.Count * 2 : 0).ToString() + "分"+"(答对一题目得2分）";
             ViewBag.amount = amount;
             ViewBag.score = score;
 

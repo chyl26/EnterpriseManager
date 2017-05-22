@@ -68,6 +68,7 @@ namespace EnterpriseManager.Controllers
         [HttpPost]
         public ActionResult Register(EnterpriseManager.Models.User user)
         {
+
             //MySQL
             //user.UserId = "UserId";
             //userService.Create(user);
